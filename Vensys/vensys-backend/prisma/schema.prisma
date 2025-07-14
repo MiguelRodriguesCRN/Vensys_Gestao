@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id         Int         @id @default(autoincrement())
+  nome       String
+  email      String      @unique
+  senha      String
+  cargo      Cargo       @default(VENDEDOR)
+  vendas     Venda[]     // Vendas feitas por esse usuário
+}
+
+model ClienteFiado {
+  id         Int         @id @default(autoincrement())
+  nome       String
+  telefone   String?
+  vendas     Venda[]     // Vendas fiadas associadas a esse cliente
+}
+
+model Venda {
+  id             Int             @id @default(autoincrement())
+  descricao      String
+  total          Float
+  fiado          Boolean         @default(false)
+  formaPagamento FormaPagamento  @default(DINHEIRO)
+  dataCriacao    DateTime        @default(now())
+  vendedorId     Int
+  clienteFiadoId Int?
+  vendedor       Usuario         @relation(fields: [vendedorId], references: [id])
+  clienteFiado   ClienteFiado?   @relation(fields: [clienteFiadoId], references: [id])
+}
+
+enum Cargo {
+  ADMIN
+  VENDEDOR
+}
+
+enum FormaPagamento {
+  DINHEIRO
+  CARTAO
+  FIADO
+}
