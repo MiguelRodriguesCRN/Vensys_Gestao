@@ -1,0 +1,8 @@
+# Converter para crlf 
+*.html eof=crlf
+*.css eof=crlf
+*.js eof=crlf
+*.sql eof=crlf
+*.md eof=crlf
+*.txt eof=crlf
+*.jsx eof=crlf
