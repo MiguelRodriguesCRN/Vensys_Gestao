@@ -8,6 +8,7 @@ const app = express();
 const userRoutes = require("./routes/userRoutes");
 const vendaRoutes = require("./routes/vendaRoutes");
 const clienteFiadoRoutes = require("./routes/clienteFiadoRoutes");  // ← Adicionado aqui
+const saidaRoutes = require("./routes/saidaRoutes");
 
 // Middlewares globais
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/usuarios", userRoutes);
 app.use("/api/vendas", vendaRoutes);
 app.use("/api/clientesfiado", clienteFiadoRoutes);  // ← Adicionado aqui
+app.use("/api/saidas", saidaRoutes);
 
 // Exemplo de rota protegida (caso queira futuramente)
 app.get("/api/protegido", (req, res) => {
