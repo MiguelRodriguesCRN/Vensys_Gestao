@@ -8,6 +8,7 @@ import CadastroClienteFiado from "./pages/CadastroClienteFiado";
 import VendaCalculadora from "./pages/VendaCalculadora";
 import EscolherPagamento from "./pages/EscolherPagamento";
 import EscolherClienteFiado from "./pages/EscolherClienteFiado"; // ✅ Importado aqui
+import Saida from "./pages/Saida";
 
 export default function App() {
   const [usuario, setUsuario] = useState(
@@ -114,6 +115,7 @@ export default function App() {
           path="*"
           element={<Navigate to={token ? "/home" : "/login"} replace />}
         />
+        <Route path="/Saida" element={<Saida />} />
       </Routes>
     </>
   );

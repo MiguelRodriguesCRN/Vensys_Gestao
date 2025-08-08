@@ -11,6 +11,12 @@ function Home({ usuario, tela, setTela }) {
     navigate("/VendaCalculadora");
   };
 
+  const handleRealizarSaida = () => {
+    console.log("Botão Realizar Saida clicado");
+    console.log("Navegando para '/Saida'");
+    navigate("/Saida");
+  };
+
   const handleCadastroClienteFiado = () => {
     console.log("Botão Cadastrar Cliente Fiado clicado"); // Log para depuração
     if (!usuario) {
@@ -60,6 +66,13 @@ function Home({ usuario, tela, setTela }) {
           </button>
           {usuario && usuario.cargo === "ADMIN" && (
             <>
+              <button
+                onClick={handleRealizarSaida}
+                className="btn btn-outline-primary py-3 fw-semibold"
+                style={{ borderRadius: '10px' }}
+              >
+                Realizar Saida
+              </button>
               <button
                 onClick={handleCadastroClienteFiado}
                 className="btn btn-outline-primary py-3 fw-semibold"
